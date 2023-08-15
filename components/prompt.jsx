@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 const Prompt = () => {
 
     const [text, setText] = useState('');
-    const [response, setResponse] = useState("");
+    const [response, setResponse] = useState('');
 
     const handleTextChange = (e) => {
         setText(e.target.value);
@@ -15,6 +15,7 @@ const Prompt = () => {
     try {
         console.log("111");
         const response = await axios.post("/api/openai", { messages: text });
+        setResponse(response.data);
         console.log("222");
         console.log(response.data);
         console.log(`The text is ${isTrue ? "true" : "false"}`);
